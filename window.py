@@ -1,7 +1,7 @@
 import pygame as pygame
 from objects.objects import Circle
 
-class window:    
+class Window:    
     def __init__(self, title: str, background_color, window_width: int, window_height: int):
         """
         @brief    GUI management class that handles rendering only.

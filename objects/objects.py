@@ -58,7 +58,7 @@ class Object(pygame.sprite.Sprite):
         self.rect.y = self.yPos() - (self.height // 2)
 
 class Circle:
-    def __init__(self, center: tuple, mass: float, id: int, time_increment: float):
+    def __init__(self, center: tuple, mass: float, id: int):
         """
         @brief    Base class Circle used to store basic data for elements rendered to the screen as
                   shapes drawn by pygame pre-built functions.
@@ -70,12 +70,11 @@ class Circle:
         self.center = [center[0], center[1]]
         self.xPos = float(center[0])
         self.yPos = float(center[1])
-        self.dt = time_increment
         self.inContact = False
         self.setDisplayCoords(center[0], center[1])
         self.setMass(mass)
         self.ID = id
-        self.acceleration = [0.0, 9.8 * self.dt]
+        self.acceleration = [0.0, 9.8 * 20]
         self.velocity = [0.0, 0.0]
     
     def setMass(self, mass: float):
@@ -98,39 +97,41 @@ class Circle:
             self.color = (0, 0, 0)
             self.radius = 100
     
-    def process_physics(self):
+    def process_physics(self, dt: int):
         """
         @brief    Changes the Circle's position based on its given acceleration and velocity
                   vectors.
+        @param dt    The change in time since last update (in seconds).
         """
         # self.inContact = False
-        print(self.acceleration[1])
+        # print(self.acceleration[1])
         if not self.inContact and self.xPos - self.radius < 0:
             self.inContact = True
-            self.acceleration[0] = 10
+            self.acceleration[0] = 10 * 2000
         elif not self.inContact and self.xPos + self.radius > 800:
             self.inContact = True
-            self.acceleration[0] = -10
+            self.acceleration[0] = -10 * 2000
         elif not self.inContact and self.yPos - self.radius < 0:
             self.inContact = True
-            self.acceleration[1] = 10
+            self.acceleration[1] = 10 * 2000
         elif not self.inContact and self.yPos + self.radius > 800:
+            # print("contact")
             self.inContact = True
-            self.acceleration[1] = -10
+            self.acceleration[1] = -10 * 2000
         else:
             self.inContact = False
 
 
 
         # For x-position
-        self.velocity[0] = float(self.acceleration[0] + self.velocity[0])
-        self.xPos = float((self.acceleration[0] / 2) +\
-                           self.velocity[0] + self.xPos)
+        self.velocity[0] = float(self.acceleration[0]*dt + self.velocity[0])
+        self.xPos = float((self.acceleration[0] / 2)*(dt**2) +\
+                           self.velocity[0]*dt + self.xPos)
 
         # For y-position
-        self.velocity[1] = float(self.acceleration[1] + self.velocity[1])
-        self.yPos = float((self.acceleration[1] / 2) +\
-                           self.velocity[1] + self.yPos)
+        self.velocity[1] = float(self.acceleration[1]*dt + self.velocity[1])
+        self.yPos = float((self.acceleration[1] / 2)*(dt**2) +\
+                           self.velocity[1]*dt + self.yPos)
         
         
         
