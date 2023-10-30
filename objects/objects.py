@@ -27,11 +27,11 @@ class Object(pygame.sprite.Sprite):
         self.surface = self.default_surface
         self.image = self.surface
 
-        self.setX(x)
-        self.setY(y)
+        self.set_x(x)
+        self.set_y(y)
         self.width = width
         self.height = height
-        self.setRotation(r)
+        self.set_rotation(r)
         self.ID = id
         self.name = name
 
@@ -41,21 +41,21 @@ class Object(pygame.sprite.Sprite):
 
         self.update_sprite()
 
-    def setX(self, x: int): self.X = x
-    def setY(self, y: int): self.Y = y
-    def setRotation(self, r: float):
+    def set_x(self, x: int): self.X = x
+    def set_y(self, y: int): self.Y = y
+    def set_rotation(self, r: float):
         self.R = r
         self.surface = pygame.transform.rotate(self.default_surface, self.R)
         self.rect = self.surface.get_rect()
         self.image = self.surface
 
-    def xPos(self): return self.X
-    def yPos(self): return self.Y
-    def getRotation(self): return self.R
+    def x_pos(self): return self.X
+    def y_pos(self): return self.Y
+    def get_rotation(self): return self.R
 
     def update_sprite(self):
-        self.rect.x = self.xPos() - (self.width // 2)
-        self.rect.y = self.yPos() - (self.height // 2)
+        self.rect.x = self.x_pos() - (self.width // 2)
+        self.rect.y = self.y_pos() - (self.height // 2)
 
 class Circle:
     def __init__(self, center: tuple, mass: float, id: int):
@@ -68,16 +68,16 @@ class Circle:
         @param time_increment    The increment of time in seconds to use when processing physics.
         """
         self.center = [center[0], center[1]]
-        self.xPos = float(center[0])
-        self.yPos = float(center[1])
+        self.x_pos = float(center[0])
+        self.y_pos = float(center[1])
         self.inContact = False
-        self.setDisplayCoords(center[0], center[1])
-        self.setMass(mass)
+        self.set_display_coords(center[0], center[1])
+        self.set_mass(mass)
         self.ID = id
         self.acceleration = [0.0, 9.8 * 20]
         self.velocity = [0.0, 0.0]
     
-    def setMass(self, mass: float):
+    def set_mass(self, mass: float):
         """
         @brief    Sets the mass of the Circle, and changes other attributes like size and color
                   depending on that mass.
@@ -105,16 +105,16 @@ class Circle:
         """
         # self.inContact = False
         # print(self.acceleration[1])
-        if not self.inContact and self.xPos - self.radius < 0:
+        if not self.inContact and self.x_pos - self.radius < 0:
             self.inContact = True
             self.acceleration[0] = 10 * 2000
-        elif not self.inContact and self.xPos + self.radius > 800:
+        elif not self.inContact and self.x_pos + self.radius > 800:
             self.inContact = True
             self.acceleration[0] = -10 * 2000
-        elif not self.inContact and self.yPos - self.radius < 0:
+        elif not self.inContact and self.y_pos - self.radius < 0:
             self.inContact = True
             self.acceleration[1] = 10 * 2000
-        elif not self.inContact and self.yPos + self.radius > 800:
+        elif not self.inContact and self.y_pos + self.radius > 800:
             # print("contact")
             self.inContact = True
             self.acceleration[1] = -10 * 2000
@@ -125,18 +125,18 @@ class Circle:
 
         # For x-position
         self.velocity[0] = float(self.acceleration[0]*dt + self.velocity[0])
-        self.xPos = float((self.acceleration[0] / 2)*(dt**2) +\
-                           self.velocity[0]*dt + self.xPos)
+        self.x_pos = float((self.acceleration[0] / 2)*(dt**2) +\
+                           self.velocity[0]*dt + self.x_pos)
 
         # For y-position
         self.velocity[1] = float(self.acceleration[1]*dt + self.velocity[1])
-        self.yPos = float((self.acceleration[1] / 2)*(dt**2) +\
-                           self.velocity[1]*dt + self.yPos)
+        self.y_pos = float((self.acceleration[1] / 2)*(dt**2) +\
+                           self.velocity[1]*dt + self.y_pos)
         
         
         
-        self.setDisplayCoords(self.xPos, self.yPos)
+        self.set_display_coords(self.x_pos, self.y_pos)
 
-    def setDisplayCoords(self, x: float, y: float):
+    def set_display_coords(self, x: float, y: float):
         self.center[0] = round(x)
         self.center[1] = round(y)
