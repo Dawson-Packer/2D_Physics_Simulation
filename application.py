@@ -16,9 +16,9 @@ class Application:
         
         self.game_tick += 1
         self.window_tick += 1
-        if self.game_tick == 10:
+        if self.game_tick == 1:
             self.process_inputs()
-            self.pl.tick(0.010)
+            self.pl.tick(0.02)
             self.game_tick = 0
         
         if self.window_tick == 17:

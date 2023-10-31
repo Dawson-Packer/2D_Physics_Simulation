@@ -74,7 +74,7 @@ class Circle:
         self.set_display_coords(center[0], center[1])
         self.set_mass(mass)
         self.ID = id
-        self.acceleration = [0.0, 9.8 * 20]
+        self.acceleration = [0.0, 9.8]
         self.velocity = [0.0, 0.0]
     
     def set_mass(self, mass: float):
@@ -104,25 +104,25 @@ class Circle:
         @param dt    The change in time since last update (in seconds).
         """
         # self.inContact = False
-        # print(self.acceleration[1])
-        if not self.inContact and self.x_pos - self.radius < 0:
+        print(self.acceleration[1])
+        if self.x_pos - self.radius < 0:
+            if not self.inContact: self.acceleration[0] = -self.acceleration[0]
             self.inContact = True
-            self.acceleration[0] = 10 * 2000
-        elif not self.inContact and self.x_pos + self.radius > 800:
+        elif self.x_pos + self.radius > 800:
+            if not self.inContact: self.acceleration[0] = -self.acceleration[0]
             self.inContact = True
-            self.acceleration[0] = -10 * 2000
-        elif not self.inContact and self.y_pos - self.radius < 0:
+        elif self.y_pos - self.radius < 0:
+            if not self.inContact: self.acceleration[1] = -self.acceleration[1]
             self.inContact = True
-            self.acceleration[1] = 10 * 2000
-        elif not self.inContact and self.y_pos + self.radius > 800:
+        elif self.y_pos + self.radius > 800:
             # print("contact")
+            if not self.inContact: self.acceleration[1] = -self.acceleration[1]
             self.inContact = True
-            self.acceleration[1] = -10 * 2000
         else:
             self.inContact = False
 
 
-
+        print(self.velocity[1])
         # For x-position
         self.velocity[0] = float(self.acceleration[0]*dt + self.velocity[0])
         self.x_pos = float((self.acceleration[0] / 2)*(dt**2) +\
