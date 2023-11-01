@@ -103,29 +103,21 @@ class Circle:
                   vectors.
         @param dt    The change in time since last update (in seconds).
         """
-        # self.inContact = False
-        # print(self.acceleration[1])
-        if self.x_pos - self.radius < 0:
-            # if not self.inContact: self.acceleration[0] = -self.acceleration[0]
-            if not self.inContact: self.velocity[0] = -self.velocity[1]
+        if self.x_pos - self.radius < 0 or self.x_pos + self.radius > 800:
+            if (not self.inContact) and abs(self.velocity[0]) > 1e-4: self.velocity[0] = -self.velocity[0]
             self.inContact = True
-        elif self.x_pos + self.radius > 800:
-            # if not self.inContact: self.acceleration[0] = -self.acceleration[0]
-            if not self.inContact: self.velocity[0] = -self.velocity[0]
-            self.inContact = True
-        elif self.y_pos - self.radius < 0:
-            # if not self.inContact: self.acceleration[1] = -self.acceleration[1]
-            if not self.inContact: self.velocity[1] = -self.velocity[1]
-            self.inContact = True
-        elif self.y_pos + self.radius > 800:
-            # print("contact")
-            # if not self.inContact: self.acceleration[1] = -self.acceleration[1]
-            if not self.inContact: self.velocity[1] = -self.velocity[1]
+        elif self.y_pos - self.radius < 0 or self.y_pos + self.radius > 800:
+            if (not self.inContact) and abs(self.velocity[1]) > 1e-4: self.velocity[1] = -self.velocity[1]
             self.inContact = True
         else:
             self.inContact = False
+        
+        if abs(self.velocity[0]) < 1e-4 or abs(self.velocity[1]) < 1e-4:
+            if abs(self.velocity[0]) < 1e-4: 
+                self.velocity[0] = 0.0
+            if abs(self.velocity[1]) < 1e-4: self.velocity[1] = 0.0
 
-
+        
         # print(self.velocity[1])
         # For x-position
         self.velocity[0] = float(self.acceleration[0]*dt + self.velocity[0])

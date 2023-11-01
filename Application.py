@@ -18,7 +18,7 @@ class Application:
         self.window_tick += 1
         if self.game_tick == 2:
             self.process_inputs()
-            self.pl.tick(0.2)
+            self.pl.tick(self.game_tick * self.delay * 20)
             self.game_tick = 0
         
         if self.window_tick == 1:
