@@ -8,7 +8,7 @@ class Application:
         self.wd = Window(title, (200, 200, 200), self.dimensions[0], self.dimensions[1])
         self.pl = ProgramLogic(dim_width, dim_height, (0, 0))
         self.isRunning = self.wd.isRunning
-        self.delay = 0.001 # seconds
+        self.delay = 0.010 # seconds
         self.game_tick = 0
         self.window_tick = 0
     
@@ -16,12 +16,12 @@ class Application:
         
         self.game_tick += 1
         self.window_tick += 1
-        if self.game_tick == 1:
+        if self.game_tick == 2:
             self.process_inputs()
-            self.pl.tick(0.02)
+            self.pl.tick(0.2)
             self.game_tick = 0
         
-        if self.window_tick == 17:
+        if self.window_tick == 1:
             self.wd.update(self.pl.objects_list, self.pl.shape_list)
             self.window_tick = 0
 

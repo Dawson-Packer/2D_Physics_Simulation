@@ -26,7 +26,7 @@ class ProgramLogic:
             if not shape.inContact:
                 # print("reset")
                 shape.acceleration[0] = 0.0
-                # shape.acceleration[1] = 9.8
+                shape.acceleration[1] = 9.8
 
 
 

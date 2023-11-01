@@ -104,25 +104,29 @@ class Circle:
         @param dt    The change in time since last update (in seconds).
         """
         # self.inContact = False
-        print(self.acceleration[1])
+        # print(self.acceleration[1])
         if self.x_pos - self.radius < 0:
-            if not self.inContact: self.acceleration[0] = -self.acceleration[0]
+            # if not self.inContact: self.acceleration[0] = -self.acceleration[0]
+            if not self.inContact: self.velocity[0] = -self.velocity[1]
             self.inContact = True
         elif self.x_pos + self.radius > 800:
-            if not self.inContact: self.acceleration[0] = -self.acceleration[0]
+            # if not self.inContact: self.acceleration[0] = -self.acceleration[0]
+            if not self.inContact: self.velocity[0] = -self.velocity[0]
             self.inContact = True
         elif self.y_pos - self.radius < 0:
-            if not self.inContact: self.acceleration[1] = -self.acceleration[1]
+            # if not self.inContact: self.acceleration[1] = -self.acceleration[1]
+            if not self.inContact: self.velocity[1] = -self.velocity[1]
             self.inContact = True
         elif self.y_pos + self.radius > 800:
             # print("contact")
-            if not self.inContact: self.acceleration[1] = -self.acceleration[1]
+            # if not self.inContact: self.acceleration[1] = -self.acceleration[1]
+            if not self.inContact: self.velocity[1] = -self.velocity[1]
             self.inContact = True
         else:
             self.inContact = False
 
 
-        print(self.velocity[1])
+        # print(self.velocity[1])
         # For x-position
         self.velocity[0] = float(self.acceleration[0]*dt + self.velocity[0])
         self.x_pos = float((self.acceleration[0] / 2)*(dt**2) +\
