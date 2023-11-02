@@ -22,16 +22,18 @@ class ProgramLogic:
         @brief    Runs all functions in the program necessary in one iteration
         @param time_passed    The time passed since last execution
         """
-        for shape in self.shape_list:
-            if not shape.inContact:
-                # print("reset")
-                shape.acceleration[0] = 0.0
-                shape.acceleration[1] = 9.8
-
-
+        # for shape in self.shape_list:
+        #     if not shape.inContact:
+        #         # print("reset")
+        #         shape.acceleration[0] = 0.0
+        #         shape.acceleration[1] = 9.8
 
         for shape in self.shape_list:
-            shape.process_physics(time_passed)
+            shape.process_physics()
+
+
+        # for shape in self.shape_list:
+        #     shape.process_physics(time_passed)
 
         self.objects_list.update()
        
@@ -46,8 +48,8 @@ class ProgramLogic:
 
         self.background = obj.Object(800, 800, 400, 400, 0.0, -1, "background.png", "Background")
         self.objects_list.add(self.background)
-        self.shape_list.append(obj.Circle((400, 400), 4.5, 0))
-
-
-
-    
+        # self.shape_list.append(obj.PhysicsObject((400, 400), 4.5, 0))
+        self.shape_list.append(obj.CollisionObject((400, 400), 0, 1.5, 15.0, 2.0))
+        self.shape_list.append(obj.CollisionObject((200, 100), 1, 3.2, -2.0, 0.5))
+        self.shape_list.append(obj.CollisionObject((450, 600), 2, 5.5, -35.0, -5.0))
+        self.shape_list.append(obj.CollisionObject((200, 700), 3, 4.0, 16.0, -12.0))

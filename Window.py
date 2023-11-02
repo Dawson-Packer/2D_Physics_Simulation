@@ -1,5 +1,5 @@
 import pygame as pygame
-from objects.objects import Circle
+from objects.objects import Shape
 
 class Window:    
     def __init__(self, title: str, background_color, window_width: int, window_height: int):

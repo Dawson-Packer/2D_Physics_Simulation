@@ -5,6 +5,25 @@ import random
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+def wall_collision(x_pos: int, y_pos: int, buffer: int, 
+                   x_velocity: float, y_velocity: float) -> tuple:
+    """
+    @brief    Checks if the specified coordinates collide with a hardcoded box and responds.
+    @param x_pos    The x-posiiton of the particle.
+    @param y_pos    The y-position of the particle.
+    @param buffer    The buffer width to calculate collisions at.
+    @param x_velocity    The x-velocity to modify.
+    @param y_velocity    The y-velocity to modify.
+    @return Returns a tuple containing the updated x- and y-velocity.
+    """
+    velocity = [x_velocity, y_velocity]
+    if x_pos - buffer < 0 or x_pos + buffer > 800: velocity[0] = -velocity[0]
+    if y_pos - buffer < 0 or y_pos + buffer > 800: velocity[1] = -velocity[1]
+    return velocity
+
+
+
+
 class Object(pygame.sprite.Sprite):
     def __init__(self, height: int, width: int, x: int, y: int,\
                   r: float, id: int, file_name: str, name: str):
@@ -57,7 +76,74 @@ class Object(pygame.sprite.Sprite):
         self.rect.x = self.x_pos() - (self.width // 2)
         self.rect.y = self.y_pos() - (self.height // 2)
 
-class Circle:
+class Shape:
+    def __init__(self, center: tuple, id: int):
+        """
+        @brief    Base class Shape for drawing pygame shapes to the screen.
+        @param center    A tuple containing the x and y coordinates of the center of the circle.
+        @param id    The ID of the Shape instance.
+        """
+        self.center = [0, 0]
+        self.x_pos = float(center[0])
+        self.y_pos = float(center[1])
+        self.ID = id
+        self.color = (0, 0, 0)
+        self.radius = None
+        self.set_display_coords(center[0], center[1])
+        
+    def set_display_coords(self, x: float, y: float):
+        self.center[0] = round(x)
+        self.center[1] = round(y)
+        
+class CollisionObject(Shape):
+    def __init__(self, center: tuple, id: int, mass: float, x_velocity: float, y_velocity: float):
+        """
+        @brief    CollisionObject class containing data and methods necessary to track colliding
+                  circles on the screen.
+        @param center    A tuple containing the x and y coordinates of the center of the circle.
+        @param id    The ID of the Shape instance.
+        @param mass    The mass of the circle.
+        @param x_velocity    The initial x_velocity of the CollisionObject.
+        @param y_velocity    The initial y_velocity of the CollisionObject.
+        """
+        super().__init__(center, id)
+        self.set_mass(mass)
+        self.previous_x_pos = None
+        self.previous_y_pos = None
+        self.velocity = [x_velocity, y_velocity]
+        self.inContact = False
+    
+    def set_mass(self, mass: float):
+        """
+        @brief    Sets the mass of the Circle, and changes other attributes like size and color
+                  depending on that mass.
+        @param mass    The value to set as the mass.
+        """
+        self.mass = mass
+        if mass < 3.0:
+            self.color = (0, 214, 56)
+            self.radius = 20
+        elif mass < 5.0:
+            self.color = (0, 191, 186)
+            self.radius = 20
+        elif mass < 10.0:
+            self.color = (0, 7, 249)
+            self.radius = 20
+        else:
+            self.color = (227, 0, 131)
+            self.radius = 20
+
+    def process_physics(self):
+        self.velocity[0], self.velocity[1] = wall_collision(self.x_pos, self.y_pos, self.radius + 1, 
+                                                            self.velocity[0], self.velocity[1])
+        self.x_pos += self.velocity[0]
+        self.y_pos += self.velocity[1]
+        self.previous_x_pos = self.x_pos
+        self.previous_y_pos = self.y_pos
+        self.set_display_coords(self.x_pos, self.y_pos)
+
+
+class PhysicsObject(Shape):
     def __init__(self, center: tuple, mass: float, id: int):
         """
         @brief    Base class Circle used to store basic data for elements rendered to the screen as
@@ -65,15 +151,10 @@ class Circle:
         @param center    A tuple containing the x and y coordinates of the center of the circle.
         @param mass    The mass of the circle.
         @param id    The id of the Circle instance.
-        @param time_increment    The increment of time in seconds to use when processing physics.
         """
-        self.center = [center[0], center[1]]
-        self.x_pos = float(center[0])
-        self.y_pos = float(center[1])
+        super().__init__(center, id)
         self.inContact = False
-        self.set_display_coords(center[0], center[1])
         self.set_mass(mass)
-        self.ID = id
         self.acceleration = [0.0, 9.8]
         self.velocity = [0.0, 0.0]
     
@@ -133,6 +214,5 @@ class Circle:
         
         self.set_display_coords(self.x_pos, self.y_pos)
 
-    def set_display_coords(self, x: float, y: float):
-        self.center[0] = round(x)
-        self.center[1] = round(y)
+class VectorArrow(Shape):
+    pass
