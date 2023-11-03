@@ -28,8 +28,8 @@ class ProgramLogic:
         #         shape.acceleration[0] = 0.0
         #         shape.acceleration[1] = 9.8
 
-        for shape in self.shape_list:
-            shape.process_physics()
+        for object in self.objects_list:
+            if type(object) is obj.CollisionObject: object.process_physics()
 
 
         # for shape in self.shape_list:
@@ -46,10 +46,9 @@ class ProgramLogic:
         self.shape_list = []
 
 
-        self.background = obj.Object(800, 800, 400, 400, 0.0, -1, "background.png", "Background")
+        self.background = obj.Sprite(800, 800, 400, 400, 0.0, -1, "background.png", "Background")
         self.objects_list.add(self.background)
-        # self.shape_list.append(obj.PhysicsObject((400, 400), 4.5, 0))
-        self.shape_list.append(obj.CollisionObject((400, 400), 0, 1.5, 15.0, 2.0))
-        self.shape_list.append(obj.CollisionObject((200, 100), 1, 3.2, -2.0, 0.5))
-        self.shape_list.append(obj.CollisionObject((450, 600), 2, 5.5, -35.0, -5.0))
-        self.shape_list.append(obj.CollisionObject((200, 700), 3, 4.0, 16.0, -12.0))
+        self.objects_list.add(obj.CollisionObject((400, 400), 0, 1.5, 15.0, 2.0, "blue_ball.png", ""))
+        self.objects_list.add(obj.CollisionObject((200, 100), 1, 3.2, -2.0, 0.5, "green_ball.png", ""))
+        self.objects_list.add(obj.CollisionObject((450, 600), 2, 5.5, -35.0, -5.0, "blue_ball.png", ""))
+        self.objects_list.add(obj.CollisionObject((200, 700), 3, 4.0, 16.0, -12.0, "pink_ball.png", ""))

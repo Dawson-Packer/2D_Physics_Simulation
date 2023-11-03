@@ -1,5 +1,5 @@
 import pygame as pygame
-from objects.objects import Shape
+from objects.objects import Sprite
 
 class Window:    
     def __init__(self, title: str, background_color, window_width: int, window_height: int):
@@ -19,12 +19,10 @@ class Window:
         self.tick = pygame.time.Clock()
         self.isRunning = True
 
-    def update(self, sprite_list: pygame.sprite.Group(), shape_list):
-        # sprite_list.update()
+    def update(self, sprite_list: pygame.sprite.Group()):
+        sprite_list.update()
         self.screen.fill(self.background_color)
         sprite_list.draw(self.screen)
-        for shape in shape_list:
-            pygame.draw.circle(self.screen, shape.color, shape.center, shape.radius)
         pygame.display.flip()
 
     def quit(self):
