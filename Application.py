@@ -22,7 +22,7 @@ class Application:
             self.game_tick = 0
         
         if self.window_tick == 1:
-            self.wd.update(self.pl.objects_list)
+            self.wd.update(self.pl.sprite_list)
             self.window_tick = 0
 
     def process_inputs(self):
