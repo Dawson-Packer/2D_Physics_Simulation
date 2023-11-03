@@ -73,6 +73,11 @@ class Sprite(pygame.sprite.Sprite):
     def get_rotation(self): return self.R
 
     def update_sprite(self, x: float, y: float):
+        """
+        @brief    Updates the sprite information using the data in the Sprite instance.
+        @param x    The actual x-position of the object.
+        @param y    The actual y-position of the object.
+        """
         self.set_display_x(x)
         self.set_display_y(y)
         self.rect.x = self.display_x() - (self.width // 2)
@@ -115,6 +120,10 @@ class CollisionObject(Sprite):
         else: self.radius = 20
 
     def process_physics(self):
+        """
+        @brief    Updates the position of the CollisionObject instance by using its velocity, and
+                  checks for wall collisions.
+        """
         self.velocity[0], self.velocity[1] = wall_collision(self.x_pos, self.y_pos, self.radius + 1, 
                                                             self.velocity[0], self.velocity[1])
         self.x_pos += self.velocity[0]
@@ -124,5 +133,15 @@ class CollisionObject(Sprite):
         self.update_sprite(self.x_pos, self.y_pos)
 
     def convert_position_to_display(self):
+        """
+        @brief    Uses the object's actual x- and y- position to find its display position on the
+                  screen.
+        """
         self.set_display_x(self.x_pos)
         self.set_display_y(self.y_pos)
+    
+    def stop(self):
+        """
+        @brief    Stops the motion of the CollisionObject instance.
+        """
+        self.velocity = [0.0, 0.0]
