@@ -60,5 +60,7 @@ class ProgramLogic:
         self.objects_list.append(obj.CollisionObject((300, 100), 4, 3.2, -20.0, 0.12, "green_ball.png", "Green 2"))
         self.objects_list.append(obj.CollisionObject((150, 600), 5, 5.5, -65.0, -51.0, "blue_ball.png", "Blue 3"))
         self.objects_list.append(obj.CollisionObject((700, 700), 6, 4.0, 6.0, -42.0, "pink_ball.png", "Pink 2"))
+        self.objects_list.append(obj.CollisionObject((250, 600), 5, 5.5, -65.0, -51.0, "blue_ball.png", "Blue 4"))
+        self.objects_list.append(obj.CollisionObject((600, 700), 6, 4.0, 6.0, -42.0, "pink_ball.png", "Pink 3"))
         for object in self.objects_list:
             self.sprite_list.add(object)
