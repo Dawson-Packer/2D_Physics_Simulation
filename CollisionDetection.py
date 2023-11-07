@@ -18,18 +18,21 @@ def calculate_ssp(objects: list, recursive_id: int):
     @param objects    The list of objects to check for collisions on.
     @param recursive_id    The n-th time the function has been run within the first call.
     """
+    # print(recursive_id)
+    # objects = [object for object in objects if object.isColliding == False]
     objects_flattened_x = sorted(objects, key=lambda x: x.x_pos)
 
     # First split
     split_idx = len(objects_flattened_x) // 2
+    print(split_idx)
     if math.sqrt((objects_flattened_x[split_idx].x_pos -\
-                   objects_flattened_x[split_idx-1].x_pos)**2 +\
-                      (objects_flattened_x[split_idx].y_pos -\
+                objects_flattened_x[split_idx-1].x_pos)**2 +\
+                    (objects_flattened_x[split_idx].y_pos -\
                         objects_flattened_x[split_idx-1].y_pos)**2) <=\
-                              objects_flattened_x[split_idx-1].radius +\
-                                  objects_flattened_x[split_idx].radius + 1:
-        print("collision!", objects_flattened_x[split_idx-1].name,\
-               objects_flattened_x[split_idx].name) # FIXME Will not be in final implementation
+                            objects_flattened_x[split_idx-1].radius +\
+                                objects_flattened_x[split_idx].radius + 1:
+    # print("collision!", objects_flattened_x[split_idx-1].name,\
+        #    objects_flattened_x[split_idx].name) # FIXME Will not be in final implementation
         objects_flattened_x[split_idx-1].stop() # FIXME Will not be in final implementation
         objects_flattened_x[split_idx].stop() # FIXME Will not be in final implementation
     objects_flattened_x = [objects_flattened_x[0:split_idx], objects_flattened_x[split_idx:]]
@@ -46,8 +49,8 @@ def calculate_ssp(objects: list, recursive_id: int):
                                 objects_flattened_y[split_idx-1].y_pos)**2) <=\
                                       objects_flattened_y[split_idx-1].radius +\
                                           objects_flattened_y[split_idx].radius + 1:
-                print("collision!", objects_flattened_y[split_idx-1].name,\
-                       objects_flattened_y[split_idx].name) # FIXME Will not be in final implementation
+                # print("collision!", objects_flattened_y[split_idx-1].name,\
+                #        objects_flattened_y[split_idx].name) # FIXME Will not be in final implementation
                 objects_flattened_y[split_idx-1].stop() # FIXME Will not be in final implementation
                 objects_flattened_y[split_idx].stop() # FIXME Will not be in final implementation
             objects_flattened_y = [objects_flattened_y[0:split_idx], 
@@ -66,6 +69,6 @@ def calculate_ssp(objects: list, recursive_id: int):
             if math.sqrt((split[1].x_pos - split[0].x_pos)**2 + \
                          (split[1].y_pos - split[0].y_pos)**2) <=\
                               split[0].radius + split[1].radius + 1:
-                print("collision!", split[0].name, split[1].name) # FIXME Will not be in final implementation
+                # print("collision!", split[0].name, split[1].name) # FIXME Will not be in final implementation
                 split[0].stop() # FIXME Will not be in final implementation
                 split[1].stop() # FIXME Will not be in final implementation

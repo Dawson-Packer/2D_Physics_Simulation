@@ -98,6 +98,7 @@ class CollisionObject(Sprite):
         @param name    The reference name of the Sprite.
         """
         self.set_mass(mass)
+        self.isColliding = False
         super().__init__(self.radius * 2, self.radius * 2, 
                          center[0], center[1], 0.0, id, file_name, name)
         self.x_pos, self.y_pos = center
@@ -145,3 +146,4 @@ class CollisionObject(Sprite):
         @brief    Stops the motion of the CollisionObject instance.
         """
         self.velocity = [0.0, 0.0]
+        self.isColliding = True

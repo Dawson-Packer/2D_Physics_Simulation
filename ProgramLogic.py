@@ -63,26 +63,28 @@ class ProgramLogic:
         # self.objects_list.append(obj.CollisionObject((700, 700), 6, 4.0, 6.0, -42.0, "pink_ball.png", "Pink 2"))
         # self.objects_list.append(obj.CollisionObject((250, 600), 5, 5.5, -65.0, -51.0, "blue_ball.png", "Blue 4"))
         # self.objects_list.append(obj.CollisionObject((600, 700), 6, 4.0, 6.0, -42.0, "pink_ball.png", "Pink 3"))
-        for i in range(0, 20):
-            self.objects_list.append(obj.CollisionObject((rd.randint(100, 700), 
-                                                          rd.randint(100, 700)), i, 
-                                                          rd.randint(0, 4) + rd.random(), 
-                                                          rd.randint(-50, 50) + rd.random(),
-                                                          rd.randint(-50, 50) + rd.random(),
-                                                          "blue_ball.png", "Blue " + str(i)))
-        for i in range(20, 40):
-            self.objects_list.append(obj.CollisionObject((rd.randint(100, 700),
-                                                         rd.randint(100, 700)), i,
-                                                         rd.randint(0, 4) + rd.random(),
-                                                         rd.randint(-50, 50) + rd.random(),
-                                                         rd.randint(-50, 50) + rd.random(),
-                                                         "green_ball.png", "Green " + str(i)))
-        for i in range(40, 60):
-            self.objects_list.append(obj.CollisionObject((rd.randint(100, 700),
-                                                         rd.randint(100, 700)), i,
-                                                         rd.randint(0, 4) + rd.random(),
-                                                         rd.randint(-50, 50) + rd.random(),
-                                                         rd.randint(-50, 50) + rd.random(),
-                                                         "pink_ball.png", "Pink " + str(i)))
+        for j in range(0, 1):
+            for i in range(0, 20):
+                self.objects_list.append(obj.CollisionObject((rd.randint(50, 750), 
+                                                            rd.randint(50, 750)), i, 
+                                                            rd.randint(0, 4) + rd.random(), 
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            "blue_ball.png", "Blue " + str(i)))
+            for i in range(20, 40):
+                self.objects_list.append(obj.CollisionObject((rd.randint(50, 750),
+                                                            rd.randint(50, 750)), i,
+                                                            rd.randint(0, 4) + rd.random(),
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            "green_ball.png", "Green " + str(i)))
+            for i in range(40, 60):
+                self.objects_list.append(obj.CollisionObject((rd.randint(50, 750),
+                                                            rd.randint(50, 750)), i,
+                                                            rd.randint(0, 4) + rd.random(),
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            rd.randint(-50, 50) + rd.random(),
+                                                            "pink_ball.png", "Pink " + str(i)))
+            
         for object in self.objects_list:
             self.sprite_list.add(object)
