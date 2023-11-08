@@ -21,8 +21,8 @@ class ProgramLogic:
 
     def tick(self, time_passed: int):
         """
-        @brief    Runs all functions in the program necessary in one iteration
-        @param time_passed    The time passed since last execution
+        @brief    Runs all functions in the program necessary in one iteration.
+        @param time_passed    The time passed since last execution.
         """
         # for shape in self.shape_list:
         #     if not shape.inContact:

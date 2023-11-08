@@ -20,12 +20,20 @@ class Window:
         self.isRunning = True
 
     def update(self, sprite_list: pygame.sprite.Group()):
+        """
+        @brief    Function call to update the display with a list of objects to render.
+        @param sprite_list    The list of sprites to render on the screen.
+        """
         sprite_list.update()
         self.screen.fill(self.background_color)
         sprite_list.draw(self.screen)
         pygame.display.flip()
 
     def quit(self):
+        """
+        @brief    Terminates the window object and quits pygame.
+        """
+        pygame.display.quit()
         pygame.quit()
 
     

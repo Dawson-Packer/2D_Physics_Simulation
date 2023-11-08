@@ -31,7 +31,7 @@ class Application:
             self.process_events()
             self.pl.tick(self.game_tick * self.delay * 20)
             self.game_tick = 0
-        
+        if not self.isRunning: return
         if self.window_tick == 1:
             self.wd.update(self.pl.sprite_list)
             self.window_tick = 0
@@ -44,6 +44,7 @@ class Application:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.quit()
+                return
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             pass
