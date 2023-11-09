@@ -1,6 +1,6 @@
-# 2D Physics Engine `v1.0`
+# 2D Physics Simulation `v1.0`
 
-A physics engine written in Python that calculates the response of objects to interactions in a 2D space. This is done so by applying the laws governing impulse, conservation of momentum, and conservation of energy.
+A physics simulation written in Python that calculates the response of objects to interactions in a 2D space. This is done so by applying the laws governing impulse, conservation of momentum, and conservation of energy.
 
 ## Setup
 
