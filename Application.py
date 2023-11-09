@@ -23,6 +23,13 @@ class Application:
         """
         @brief    Executes actions on a gameloop. This function itself does not loop, but is called
                   outside of the class.
+            ___________________________________________
+           | Function calls                            |
+           | * process_events()                        |
+           | * ProgramLogic.tick()                     |
+           | * Window.update(ProgramLogic.sprite_list) |
+           |___________________________________________|
+        # TODO: Maybe remove this box
         """
         
         self.game_tick += 1

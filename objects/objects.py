@@ -3,7 +3,7 @@ import math as math
 import os
 import random
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+# os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def wall_collision(x_pos: int, y_pos: int, buffer: int, 
                    x_velocity: float, y_velocity: float) -> tuple:
@@ -42,7 +42,7 @@ class Sprite(pygame.sprite.Sprite):
         super().__init__()
 
 
-        self.default_surface = pygame.transform.smoothscale(pygame.image.load(os.path.join("..", "media", file_name)).convert_alpha(), (width, height))
+        self.default_surface = pygame.transform.smoothscale(pygame.image.load(os.path.join("media", file_name)).convert_alpha(), (width, height))
         self.surface = self.default_surface
         self.image = self.surface
 

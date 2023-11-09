@@ -1,0 +1,139 @@
+body {
+    /* background-color: whitesmoke; */
+    background-image: url("../images/background.png")
+}
+
+h1.title {
+    color: white;
+    margin: 10px 10px 0px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: left;
+}
+
+h1.subtitle {
+    color: rgb(207, 207, 207);
+    margin: 0px 10px 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+    text-align: left;
+}
+
+p1 {
+    color: white;
+    margin: 0px 0px 0px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+}
+
+p.insert_box {
+    color: white;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px
+
+}
+
+table.invisible {
+    border: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    /* padding: 10px 10px 0px 10px; */
+    width: calc(0% + 1000px);
+    margin-left: 0px;
+    word-wrap: break-word;
+    table-layout: fixed;
+
+}
+
+table.insert_dark {
+    border: 1px solid;
+    border-color: rgb(141, 141, 141);
+    background-color: rgb(180, 180, 180);
+    width: calc(0% + 1000px);
+    /* width: 1000px; */
+    margin-left: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+table.insert_light {
+    border: 1px solid;
+    border-color: rgba(161, 161, 161, 0.541);
+    background-color: rgb(230, 230, 230);
+    width: calc(0% + 1000px);
+    overflow-wrap: break-all;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+th.insert {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 0px 10px
+
+}
+
+td.insert {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px
+
+}
+
+td.invisible {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px;
+    
+
+}
+
+div.gallery {
+    margin: 10px 10px 10px 10px;
+    border: 0px;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    /* border: 1px solid #777; */
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+
+}

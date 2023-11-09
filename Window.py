@@ -16,6 +16,8 @@ class Window:
         pygame.init()
         self.screen = pygame.display.set_mode(self.dimensions, pygame.RESIZABLE)
         pygame.display.set_caption(title)
+        icon = pygame.image.load('media/icon.png').convert_alpha()
+        pygame.display.set_icon(icon)
         self.tick = pygame.time.Clock()
         self.isRunning = True
 
