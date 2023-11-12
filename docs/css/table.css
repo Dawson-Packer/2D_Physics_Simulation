@@ -1,0 +1,156 @@
+table:hover {
+    scale: 1.01;
+}
+
+th:hover {
+    scale: 1.01;
+}
+
+td:hover {
+    scale: 1.01;
+}
+
+table.invisible {
+    border: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    width: calc(0% + 1000px);
+    margin-left: 0px;
+    word-wrap: break-word;
+    table-layout: fixed;
+
+}
+
+th.title_light {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 0px 10px
+}
+
+th.subtitle_light {
+    color: rgb(207, 207, 207);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 0px 10px 10px 10px
+}
+
+th.title_dark {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 0px 10px
+}
+
+th.subtitle_dark {
+    color: rgb(92, 92, 92);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 0px 10px 10px 10px
+}
+
+td.text_light {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px;
+}
+
+td.text_dark {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px;
+}
+
+
+table.insert_dark {
+    border: 1px solid;
+    border-color: rgb(141, 141, 141);
+    background-color: rgb(180, 180, 180);
+    width: calc(0% + 1000px);
+    /* width: 1000px; */
+    margin-left: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+table.insert_light {
+    border: 1px solid;
+    border-color: rgba(161, 161, 161, 0.541);
+    background-color: rgb(230, 230, 230);
+    width: calc(0% + 1000px);
+    overflow-wrap: break-all;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+th.insert {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 0px 10px
+
+}
+
+td.insert {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px
+
+}
+
+div.gallery {
+    margin: 10px 10px 10px 10px;
+    border: 0px;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    width:179px;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+
+}
