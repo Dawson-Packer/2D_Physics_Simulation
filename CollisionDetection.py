@@ -33,8 +33,9 @@ def calculate_ssp(objects: list, recursive_id: int):
                                 objects_flattened_x[split_idx].radius + 1:
     # print("collision!", objects_flattened_x[split_idx-1].name,\
         #    objects_flattened_x[split_idx].name) # FIXME Will not be in final implementation
-        objects_flattened_x[split_idx-1].stop() # FIXME Will not be in final implementation
-        objects_flattened_x[split_idx].stop() # FIXME Will not be in final implementation
+        # objects_flattened_x[split_idx-1].stop() # FIXME Will not be in final implementation
+        # objects_flattened_x[split_idx].stop() # FIXME Will not be in final implementation
+        collide(objects_flattened_x[split_idx-1], objects_flattened_x[split_idx])
     objects_flattened_x = [objects_flattened_x[0:split_idx], objects_flattened_x[split_idx:]]
     
 
@@ -51,8 +52,9 @@ def calculate_ssp(objects: list, recursive_id: int):
                                           objects_flattened_y[split_idx].radius + 1:
                 # print("collision!", objects_flattened_y[split_idx-1].name,\
                 #        objects_flattened_y[split_idx].name) # FIXME Will not be in final implementation
-                objects_flattened_y[split_idx-1].stop() # FIXME Will not be in final implementation
-                objects_flattened_y[split_idx].stop() # FIXME Will not be in final implementation
+                # objects_flattened_y[split_idx-1].stop() # FIXME Will not be in final implementation
+                # objects_flattened_y[split_idx].stop() # FIXME Will not be in final implementation
+                collide(objects_flattened_y[split_idx-1], objects_flattened_y[split])
             objects_flattened_y = [objects_flattened_y[0:split_idx], 
                                     objects_flattened_y[split_idx:]]
             for split in objects_flattened_y:
@@ -70,5 +72,11 @@ def calculate_ssp(objects: list, recursive_id: int):
                          (split[1].y_pos - split[0].y_pos)**2) <=\
                               split[0].radius + split[1].radius + 1:
                 # print("collision!", split[0].name, split[1].name) # FIXME Will not be in final implementation
-                split[0].stop() # FIXME Will not be in final implementation
-                split[1].stop() # FIXME Will not be in final implementation
+                # split[0].stop() # FIXME Will not be in final implementation
+                # split[1].stop() # FIXME Will not be in final implementation
+                collide(split[0], split[1])
+    
+    def collide(object_1: CollisionObject, object_2: CollisionObject):
+        mass_1 = object_1.mass
+        mass_2 = object_2.mass
+        
